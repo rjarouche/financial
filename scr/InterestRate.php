@@ -1,5 +1,5 @@
 <?php
-namespace Jarouche\Finantial;
+namespace Jarouche\Financial;
 
 class InterestRate implements InterestRateInterface
 {
@@ -28,12 +28,12 @@ class InterestRate implements InterestRateInterface
     
     public function getLiteral() : float
     {
-        return $literal_rate;
+        return $this->literal_rate;
     }
     
-    public function getEvaluation() :float
+    public function getEvaluation() : float
     {
-        return $evaluation_rate;
+        return $this->evaluation_rate;
     }    
        
 

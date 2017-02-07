@@ -1,6 +1,6 @@
 <?php
 
-namespace Jarouche\Finantial;
+namespace Jarouche\Financial;
 
 interface InterestRateInterface 
 {
