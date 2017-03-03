@@ -2,12 +2,17 @@
 
 namespace Jarouche\Financial;
 
-class FinancingCoefficient
+class FinancingCoefficient implements FinancialInterface
 {
     protected $objInterestRate;
     protected $periods;
     protected $FCValue;
     protected $type;
+    
+    // to set properties are readOnly
+    public function __get($property){
+        return $this->{$property};
+    }
     
     public function __construct(float $InterestRate, int $periods,int $type = 0)
     {
@@ -18,7 +23,7 @@ class FinancingCoefficient
         $this->type = $type;
     }
     
-    public function getFCValue(): float
+    public function evaluate(): float
     {
         $this->FCValue = $this->objInterestRate->getEvaluation() / (1 - (1 / pow(1 + $this->objInterestRate->getEvaluation(), ($this->periods - $this->type))));
         return $this->FCValue;
