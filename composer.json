@@ -2,7 +2,7 @@
     "name": "jarouche/financial",
     "keywords": ["PHP","PMT","FINANCIAL"],
     "homepage": "http://rodrigojarouche.blogspot.com.br",
-    "description": "Finantial class for php",
+    "description": "Financial class for php",
     "type": "library",
     "require": {
         "php": ">=7.0.0"
