@@ -1,0 +1,29 @@
+<?php
+namespace Jarouche\Financial;
+abstract class Payment implements FinancialInterface
+{
+    protected $objFinancingCoefficient;
+    protected $pv;
+    protected $pmt;
+    protected $type;
+    
+    // to set properties are readOnly
+    public function __get($property){
+        return $this->{$property};
+    }
+    
+    public function __construct(float $InterestRate, int $periods, float $pv, int $type = 0)
+    {
+        if (!in_array($type, [0,1])) throw new \Exception("Value of type must be 0 or 1");
+
+        $this->objFinancingCoefficient = new FinancingCoefficient($InterestRate,$periods,$type);
+        $this->pv = $pv;
+        $this->type = $type;
+    }
+    
+    public function evaluate() : float
+    {
+        return 0;
+    }
+    
+}

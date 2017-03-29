@@ -1,9 +1,0 @@
-<?php
-
-namespace Jarouche\Financial;
-
-interface InterestRateInterface 
-{
-   public function getLiteral() : float;
-   public function getEvaluation() :float;
-}

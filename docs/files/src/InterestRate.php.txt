@@ -1,0 +1,54 @@
+<?php
+/*
+ * Class that represents the interest in evaluations. 
+ * Construct method is protected than use one of the this factory methods rateFromLiteral or rateFromEvaluation
+ * @see  InterestRate::rateFromLiteral
+ * @see  InterestRate::rateFromEvaluation
+ */
+
+namespace Jarouche\Financial;
+
+class InterestRate implements InterestRateInterface
+{
+    protected $literal_rate;
+    protected $evaluation_rate;
+    protected $self_object;
+    
+    protected function __construct(){}
+    
+    /*
+     * @method InterestRateInterface rateFromLiteral, factory method that returns a InterestRateInterface when a literal value is passed
+     * example for 50%, InterestRate::rateFromLiteral(50);
+     */
+    public static function rateFromLiteral(float $rate) : InterestRateInterface
+    {
+        $self_object = new Self();
+        $self_object->literal_rate = $rate;
+        $self_object->evaluation_rate = $rate/100;
+        return $self_object;
+    }    
+    
+    /*
+     * @method InterestRateInterface rateFromLiteral, factory method that returns a InterestRateInterface when a evaluation value is passed
+     * example for 50%, InterestRate::rateFromLiteral(0.5);
+     */
+    public static function rateFromEvaluation(float $rate) : InterestRateInterface
+    {
+        $self_object = new Self();
+        $self_object->literal_rate = $rate*100;
+        $self_object->evaluation_rate = $rate;
+        return $self_object;
+    }    
+    
+    public function getLiteral() : float
+    {
+        return $this->literal_rate;
+    }
+    
+    public function getEvaluation() : float
+    {
+        return $this->evaluation_rate;
+    }    
+       
+
+}
