@@ -11,7 +11,7 @@ class FV extends Payment
     public function evaluate(): float
     {
         $objPmt = new PMT(
-            $this->objFinancingCoefficient->evaluate(), 
+            $this->objFinancingCoefficient->objInterestRate->getEvaluation(), 
             $this->objFinancingCoefficient->periods, 
             $this->pv, 
             $this->type

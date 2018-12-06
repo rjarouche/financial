@@ -14,4 +14,7 @@ interface InterestRateInterface
     * @method float getEvaluation get interest Evaluation value, example 50% is 0.5         
     */ 
    public function getEvaluation() :float;
+   
+   public static function rateFromLiteral(float $rate) : InterestRateInterface;
+   public static function rateFromEvaluation(float $rate) : InterestRateInterface;
 }
